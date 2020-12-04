@@ -11,6 +11,10 @@ app.use(json());
 app.use(urlencoded({ extended: true }));
 
 app.get('/', controller().getAll)
+app.post('/', controller().createOne)
+app.get('/:id', controller().getOne)
+app.put('/:id', controller().updateOne)
+app.delete('/:id', controller().deleteOne)
 
 app.listen(port, () => {
     console.log(`Server running on port: ${port}`);
