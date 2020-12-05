@@ -1,50 +1,76 @@
-const getAll = () => {
-    return (req, res) => {
-        const data = {}
-        data.message = 'testing getAll handler succeeded'
-        res.status(200).json({ data: data })
+const getAll = (model) => {
+  return async (req, res) => {
+    try {
+      const data = await model.find({}).lean().exec();
+      res.status(200).json({ data: data });
+    } catch (e) {
+      console.log(e);
+      res.status(400).end();
     }
-}
+  };
+};
 
-const createOne = () => {
-    return (req, res) => {
-        const data = {}
-        data.message = 'testing createOne handler '
-        res.status(200).json({ data: data })
+const createOne = (model) => {
+  return async (req, res) => {
+    try {
+      const data = await model.create({ ...req.body });
+      res.status(201).json({ data: data });
+    } catch (e) {
+      console.log(e);
+      res.status(400).end();
     }
-}
+  };
+};
 
-const getOne = () => {
-    return (req, res) => {
-        const data = {}
-        data.message = 'testing getOne handler'
-        res.status(200).json({ data: data })
+const getOne = (model) => {
+  return async (req, res) => {
+    try {
+      const data = await model.findOne({ _id: req.params.id }).lean().exec();
+      res.status(200).json({ data: data });
+    } catch (e) {
+      console.log(e);
+      res.status(400).end();
     }
-}
+  };
+};
 
-const updateOne = () => {
-    return (req, res) => {
-        const data = {}
-        data.message = 'testing updateOne handler'
-        res.status(200).json({ data: data })
+const updateOne = (model) => {
+  return async (req, res) => {
+    try {
+      const data = await model
+        .findOneAndUpdate(
+          { _id: req.params.id },
+          { ...req.body },
+          { new: true }
+        )
+        .lean()
+        .exec();
+      res.status(200).json({ data: data });
+    } catch (e) {
+      console.log(e);
+      res.status(400).end();
     }
-}
+  };
+};
 
-const deleteOne = () => {
-    return (req, res) => {
-        const data = {}
-        data.message = 'testing deleteOne handler'
-        res.status(200).json({ data: data })
+const deleteOne = (model) => {
+  return async (req, res) => {
+    try {
+      const data = await model.findOneAndRemove({ _id: req.params.id });
+      res.status(200).json({ data: data });
+    } catch (e) {
+      console.log(e);
+      res.status(400).end();
     }
-}
+  };
+};
 
+const controller = (model) => ({
+  getAll: getAll(model),
+  createOne: createOne(model),
+  getOne: getOne(model),
+  updateOne: updateOne(model),
+  deleteOne: deleteOne(model),
+});
 
-const controller = () => ({
-    getAll: getAll(),
-    createOne: createOne(),
-    getOne: getOne(),
-    updateOne: updateOne(),
-    deleteOne: deleteOne()
-})
-
-export default controller
+export default controller;
