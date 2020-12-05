@@ -19,7 +19,7 @@ $ npm start
  `localhost:8000/api/players
 
 
-# Resousces:
+# Resources:
 <table>
 <tr>
    <th>Resource</th>
