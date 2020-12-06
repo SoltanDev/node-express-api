@@ -1,11 +1,11 @@
 import mongoose from "mongoose";
 
 const connect = async () => {
-  const uri = "mongodb://192.168.1.3:27017/footballDB";
+  const uri = "mongodb://"+process.env.DB_HOST+":"+process.env.DB_PORT+"/"+process.env.DB_NAME;
   try {
     await mongoose.connect(uri, {
       useNewUrlParser: true,
-      useFindAndModify: false,
+      iuseFindAndModify: false,
       useUnifiedTopology: true,
     });
     console.log("mongoose connected succesfuly");

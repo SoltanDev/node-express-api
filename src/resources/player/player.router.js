@@ -3,7 +3,9 @@ import controller from "./player.controller";
 
 const router = Router();
 
-router.route("/").get(controller.getAll).post(controller.createOne);
+router.route("/")
+  .get(controller.getAll)
+  .post(controller.createOne);
 
 router
   .route("/:id")

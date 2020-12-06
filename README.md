@@ -1,7 +1,7 @@
 # node-express-api :book:
 
 A little Rest API with express and node.js
-this is a soccer teams and players API
+this is a soccer club and players API
 
 #### Clone the repo
 
@@ -30,7 +30,7 @@ $ npm start
 # Resources:
 
 - [Player](#Player)
-- [Team](#team)
+- [club](#club)
 - [League](#league)
 
 ---
@@ -91,9 +91,9 @@ A player model have this properties:
 
 ---
 
-### Team
+### club
 
-A team model have this properties:
+A club model have this properties:
 
 ```javascript
 
@@ -108,33 +108,33 @@ A team model have this properties:
 </tr>
 <tr>
   <td>GET</td>
-  <td>/api/teams</td>
+  <td>/api/clubs</td>
   <td>200</td>
-  <td>return collection of teams</td>
+  <td>return collection of clubs</td>
 </tr>
 <tr>
   <td>POST</td>
-  <td>/api/teams</td>
+  <td>/api/clubs</td>
   <td>201</td>
-  <td>creates a team model</td>
+  <td>creates a club model</td>
 </tr>
 <tr>
   <td>GET</td>
-  <td>/api/teams/{id}</td>
+  <td>/api/clubs/{id}</td>
   <td>200</td>
-  <td>returns a team model</td>
+  <td>returns a club model</td>
 </tr>
 <tr>
   <td>PUT</td>
-  <td>/api/teams/{id}</td>
+  <td>/api/clubs/{id}</td>
   <td>200</td>
-  <td>updates a team model</td>
+  <td>updates a club model</td>
 </tr>
 <tr>
   <td>DELETE</td>
-  <td>/api/teams/{id}</td>
+  <td>/api/clubs/{id}</td>
   <td>200</td>
-  <td>delete a team model</td>
+  <td>delete a club model</td>
 </tr>
 </table>
 

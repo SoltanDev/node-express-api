@@ -6,7 +6,8 @@ const playerSchema = new mongoose.Schema({
     required: true,
   },
   club: {
-    type: String,
+    type: mongoose.SchemaTypes.ObjectId,
+    ref: 'Club',
     required: true,
   },
   league: {
